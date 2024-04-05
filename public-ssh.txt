@@ -1,0 +1,15 @@
+https://www.redhat.com/zh-tw/blog/connecting-to-vms-in-red-hat-openshift-virtualization
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ssh-public
+  namespace: <your namespace>
+spec:
+  selector:
+    kubevirt.io/domain: <vm name>
+  ports:
+    - protocol: TCP
+      port: 22
+      targetPort: 22
+  type: LoadBalancer
